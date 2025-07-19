@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  
+
+<body class=""p-3 mb-2 bg-dark text-white"">
+
+  
+
+  <div>
+    <h2 id="main_h2">Add a Todo</h2>
+  <form action="/" method="POST">
+  <input type="text" placeholder="To Do Title" name="title" required>
+  <input type="text" placeholder="Description(Optional)" name="description">
+  <input type="submit" value="Add">
+</form>
+</div>
+
+  <h2 class="your_h2">Your To Do List</h2>
+
+{% if alltodo|length==0 %}
+  <div class="alert alert-warning" role="alert">
+  No todo added! Add a todo now...
+</div>  
+{% else %}
+
+
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">SNo</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Created On</th>
+      <th scope="col">Action</th>
+      <th scope="col">Mark</th>
+    </tr>
+  </thead>
+  {% for todo in alltodo %}
+    
+
+  <tbody>
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{todo.title}}</td>
+      <td>{{todo.description}}</td>
+      <td>{{todo.date_created}}</td>
+      <td>
+        
+        <a href="/delete/{{todo.sno}}"><button type="button" class="btn btn-success btn-sm">Delete</button></a>
+        <a href="/update/{{todo.sno}}"><button type="button" class="btn btn-primary btn-sm">Update</button></a>
+        </td>
+      <td>
+        <div class="checkbox-wrapper-5">
+  <div class="check">
+    <input id="check-{{todo.sno}}" type="checkbox">
+    <label for="check-{{todo.sno}}"></label>
+  </div>
+</div>
+
+
+
+    
+
+      </td>
+    </tr>
+  
+  </tbody>
+  {% endfor %}
+</table>
+
+{% endif %}
+  
+</div>
+
+</body>
+{% endblock body %}

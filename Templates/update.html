@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+    
+
+<body class=""p-3 mb-2 bg-dark text-white"">
+  <div>
+    <h2 id="main_h2">Update Your Todo</h2>
+  <form action="/update/{{alltodo.sno}}" method="POST">
+  <input type="text" placeholder="To Do Title" name="title" value='{{alltodo.title}}' required>
+  <input type="text" placeholder="Description(Optional)" name="description" value="{{alltodo.description}}">
+  <input type="submit" value="Update">
+</form>
+</div>
+{% endblock body %}
